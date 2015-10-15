@@ -1,0 +1,117 @@
+<body ng-controller="detailsController">
+
+
+<div class="container-fluid">
+    <div class=" main-content1 ">
+        <form method="post" action="" name="myForm" ng-submit="submitForm(myForm.$valid)" novalidate>
+
+
+            <div class="page-title">User Additional Info</div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp; Mobile Number</div>
+                <div class="col-sm-2"><input type="text" name="mobile" placeholder="Mobile Number" ng-model="mobile"
+                                             ng-minlength="10" ng-maxlength="10" ng-pattern="/^\d+$/" required></div>
+                <span class="col-sm-3  error-font" ng-show="myForm.mobile.$error.pattern">Enter Only Number</span>
+                <span class="col-sm-3 error-font"
+                      ng-show="!myForm.mobile.$error.pattern && myForm.mobile.$error.minlength">Phoneno is too short.</span>
+                <span class="col-sm-3 error-font" ng-show="myForm.mobile.$error.maxlength">Phoneno is too long.</span>
+
+            </div>
+
+            <br/>
+
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp E-mail</div>
+                <div class="col-sm-2"><input type="email" name="email" placeholder="EMail" ng-model="email1" required>
+                </div>
+                <span class="col-sm-3 error-font" ng-show="myForm.email.$invalid && !myForm.email.$pristine">Enter a valid email.</span>
+
+
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp Address Line1</div>
+                <div class="col-sm-2"><input type="text" name="address1" placeholder="Address" ng-model="address1"
+                                             required>
+                </div>
+                <span class="col-sm-3 error-font" ng-show="myForm.address1.$invalid && !myForm.address1.$pristine">Enter a valid email.</span>
+
+
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp Address Line2</div>
+                <div class="col-sm-2"><input type="text" name="address2" placeholder="Address2" ng-model="address2"
+                                             required>
+                    <span class="col-sm-3 error-font" ng-show="myForm.address2.$invalid && !myForm.address2.$pristine">Enter a valid email.</span>
+
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp Country</div>
+                <div class="col-sm-2"><input type="text" name="country" placeholder="Country" ng-model="country"
+                                             required></div>
+                <span class="col-sm-3 error-font" ng-show="myForm.country.$invalid && !myForm.country.$pristine">Enter a valid email.</span>
+
+
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp State</div>
+                <div class="col-sm-2"><input type="text" name="state" placeholder="State" ng-model="state1" required>
+                </div>
+                <span class="col-sm-3 error-font" ng-show="myForm.state.$invalid && !myForm.state.$pristine">Enter a valid email.</span>
+
+
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp City</div>
+                <div class="col-sm-2"><input type="text" name="city" placeholder="City" ng-model="city" required></div>
+        <span class="col-sm-3 error-font"
+              ng-show="myForm.city.$invalid && !myForm.city.$pristine">Enter a valid City.</span>
+
+
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2 font">&nbsp; Zip-code</div>
+                <div class="col-sm-2"><input type="text" name="code" placeholder="Zip Code" ng-model="code"
+                                             ng-minlength="6" ng-maxlength="6" ng-pattern="/^\d+$/" required></div>
+                <span class="col-sm-3 error-font" ng-show="myForm.code.$error.pattern">Enter Only Number</span>
+                <span class="col-sm-3 error-font" ng-show="!myForm.code.$error.pattern && myForm.code.$error.minlength">Zip-Code is too short.</span>
+                <span class="col-sm-3 error-font" ng-show="myForm.code.$error.maxlength">Zip-code is too long.</span>
+
+
+            </div>
+            <br/>
+
+            <div class="row">
+
+
+                <p align="center"> <a href="#interests"><input type="button" ng-disabled="myForm.$invalid"
+                                                                  ng-click="detailsClick()"
+                                                                  class="btn btn-success button-style"
+                                                                  value="Next"/></a></p>
+
+            </div>
+        </form>
+    </div>
+</div>
+</body>

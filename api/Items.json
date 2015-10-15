@@ -1,0 +1,90 @@
+{
+  "UseName":"MOnisha",
+  "options": [
+    "Most Viewed",
+    "Rating",
+    "Low Cost",
+    "Popular"
+  ],
+  "Location":["Chennai","Bangalore","Delhi","Mumbai","Coimbatore","Tiruvallur","Vellore"],
+  "classifieds": [
+    {
+      "id": 1,
+      "name": "Designing",
+      "Most Viewed":100,
+      "Rating":5,
+      "Low Cost":2000,
+      "Popular":2,
+      "price": 500,
+      "description": "Best cloth designers",
+      "option": [
+        "Most Viewed",
+        "Rating",
+        "Low Cost",
+        "Popular"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Painting",
+      "Most Viewed":400,
+      "Rating":2,
+      "Low Cost":7000,
+      "Popular":2,
+      "price": 500,
+      "description": "Best cloth designers",
+      "option": [
+        "Most Viewed",
+        "Rating",
+        "Low Cost",
+        "Popular"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cooking",
+      "Most Viewed":900,
+      "Rating":3,
+      "Low Cost":5000,
+      "Popular":1,
+      "description": "Best cloth designers",
+      "option": [
+        "Most Viewed",
+        "Rating",
+        "Low Cost",
+        "Popular"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Painting",
+      "Most Viewed":500,
+      "Rating":2,
+      "Low Cost":100,
+      "Popular":1,
+      "description": "Best cloth designers",
+      "option": [
+        "Most Viewed",
+        "Rating",
+        "Low Cost",
+        "Popular"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dance",
+      "Most Viewed":110,
+      "Rating":1,
+      "Low Cost":8000,
+      "Popular":3,
+      "description": "Best cloth designers",
+      "option": [
+        "Most Viewed",
+        "Rating",
+        "Low Cost",
+        "Popular"
+      ]
+    }
+
+  ]
+}

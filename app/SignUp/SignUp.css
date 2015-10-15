@@ -1,0 +1,53 @@
+.page-title{
+    text-align: center;
+    font-size: x-large;
+    text-decoration: underline;
+    color: Black;
+
+}
+
+.main-content1{
+    background-color: #dedadf;
+}
+
+.table{
+    width : 75%;
+    border: solid 1px #2A0823;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #bdb5c0;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #d0cbd2;
+}
+.table-header{
+    background-color: #2A0823;
+    color: white;
+    text-align: center;
+}
+
+th{
+    text-align: center;
+}
+
+.font{
+    color:black;
+    font-family:tahoma
+}
+
+
+.button-style{
+    height:50px;
+    width:100px;
+
+}
+
+.error-font{
+    color:tomato;
+}
+
+.content-height{
+    height: 100%;
+}
+

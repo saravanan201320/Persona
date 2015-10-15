@@ -1,0 +1,98 @@
+<header class="header">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid header-style">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/main"><input type="image" class="brand-img" src="Images/brand.PNG"  ng-disabled="!loggedIn"></a>
+            </div>
+            <div class="collapse navbar-collapse" >
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle glyphicon-size" data-toggle="dropdown" href="" ng-show="loggedIn"><p class="glyphicon glyphicon-user"></p><p class="glyphicon glyphicon-log-out"></p> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">My Profile</a></li>
+                            <li ><a href="#">My Cart</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#AboutUsModal">About Us</a></li>
+                            <div class="divider"></div>
+                            <li><a href="#/">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="AboutUsModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">SoundBetter: The Online Classifieds for  Talent</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Classified has always been a hotbed for talents, but over the last decade it has also come to incubate some of the most unique technology startups in the country. So what could be better than when the two come together at a crossroads? SoundBetter, an online platform and database designed to facilitate home recording different talented person ability to seek out production talent through a classifieds-inspired online setting, stands firmly at this intersection.
+
+                        SoundBetter was born from the frustrations creator and Boston-native Shachar Gilad encountered as he, through word of mouth, attempted to find engineers to master his songs when he worked as a musician and later when as a producer he looked for musician?s work to master. Gilad decided to bridge the gap between the two sets of people by providing an easy means for mutual discovery through an online marketplace of talent. Listen up aspiring All different talents ? SoundBetter?s platform may provide exactly what you need to polish that demo or the consistent production work to pay the bills.
+                    </p>
+                    <div class="container">
+                        <br>
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox" >
+                                <div class="item active">
+                                    <img src="images/cook.png" alt="Chania" style="width: 400px;height: 300px;" >
+                                    <div class="carousel-caption">
+                                        <h3>{{classified.classifieds[0].name}}</h3>
+                                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img src="images/dance1.jpg" alt="Chania" style="width: 400px;height: 300px;">
+                                    <div class="carousel-caption">
+                                        <h3>{{classified.classifieds[1].name}}</h3>
+                                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img src="images/classicPhoto.jpg" alt="Flower" style="width: 400px;height: 300px;">
+                                    <div class="carousel-caption">
+                                        <h3>{{classified.classifieds[2].name}}</h3>
+                                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img src="images/painter.png" alt="Flower" style="width: 400px;height: 300px;">
+                                    <div class="carousel-caption">
+                                        <h3>{{classified.classifieds[3].name}}</h3>
+                                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</header>

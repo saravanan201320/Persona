@@ -1,0 +1,97 @@
+<body ng-controller="mainPageController">
+
+
+<div class="container-fluid">
+    <!--<div class="row-fluid">-->
+
+    <div class="span2 vertical-line-left">
+        <p align="center"><img src="Images/dp-male.png" style="width: 125px"></p>
+
+        <p align="center" class="name-style"><a href="">{{fullName}}</a></p>
+
+        <p align="left" class="mini-section-header">Your Interests:</p>
+        <ul ng-repeat="userInterest in userInterests | unique:'category'">
+            <li><span class="glyphicon" ng-class="glyphiconName{{$index}}"><a href="">
+                {{userInterest.category}}</a></span>
+            </li>
+        </ul>
+        <p align="left" class="mini-section-header">Quick Links:</p>
+        <ul>
+            <li><span class="glyphicon glyphicon-edit"><a href=""> Edit Profile</a></span></li>
+            <li><span class="glyphicon glyphicon-lock"><a href=""> Change Password</a></span></li>
+        </ul>
+    </div>
+    <div class="right-div vertical-line-right">
+        <div class="iymk-header">Interests You May Like</div>
+        <div class="iymk-body">Cooking</div>
+    </div>
+    <div>
+        <div class="postad-header">Post An Advertisement</div>
+        <div class="postad-body">
+            <p class="category-style">Select Category :
+
+            <div class="dropdown">
+                <select class="btn  dropdown-toggle categorydd-style categorybtn-style" ng-model="selectedItem"
+                        ng-change="category(selectedItem)"
+                        ng-options="userInterest.category for userInterest in userInterests | unique:'category'"
+                        value="{{userInterest.category}}">
+
+                    <option value="">---Please select---</option>
+
+                </select>
+            </div>
+            </p>
+            <p class="subcategory-style">Select Sub-Category :
+
+            <div class="dropdown">
+
+
+                <select class="btn  dropdown-toggle subcategorydd-style categorybtn-style" ng-model="selectedSubItem"
+                        ng-change="subCategory(selectedSubItem)"
+                        ng-options="subCategory for subCategory in subCategorys | unique:'category'"
+                        value="{{subCategory}}">
+                    <option value="">---Please select---</option>
+
+                </select>
+            </div>
+            </p>
+            <p class="desc-style">Description : <textarea class="textarea-style" rows="4" cols="50"
+                                                          placeholder="Post your advertisement description here!"
+                                                          ng-model="description"></textarea>
+            </p>
+
+            <p align="center" class="row">
+                <button type="submit" class="btn btn-block postad-btn categorybtn-style" ng-click="postAd()">PostAd
+                </button>
+                <button type="reset" class="btn btn-block reset-btn categorybtn-style">Reset</button>
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="newsfeed-header">News Feed</div>
+    <div class="newsfeed-body">
+        <div class="newsfeed-items" dir-paginate="newsFeedPost in newsFeedPosts|orderBy:'-updateDetails.createdTS'|filter:search|itemsPerPage:5">
+
+            <p><b>Posted Ad In {{newsFeedPost.category}} ({{newsFeedPost.sub_Category}}):</b>
+
+            <p>{{newsFeedPost.description}}</p>
+
+            <p>{{newsFeedPost.image}}</p>
+
+            <p>Created By {{newsFeedPost.updateDetails.createdBy}}, {{newsFeedPost.updateDetails.createdTS}}
+        </div>
+        <dir-pagination-controls style="float: right"
+                max-size="50"
+                direction-links="true"
+                boundary-links="true">
+        </dir-pagination-controls>
+
+    </div>
+    <!--</div>-->
+
+</div>
+</body>

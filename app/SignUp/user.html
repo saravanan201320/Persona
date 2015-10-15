@@ -1,0 +1,63 @@
+<body ng-controller="userController">
+<div class="container-fluid">
+    <div class="main-content1">
+        <br/>
+        <br/>
+        <br/>
+        <div class="page-title">User Details</div>
+        <br/>
+
+        <form method="post" name="myForm" novalidate>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1 font">&nbsp;FirstName</div>
+                <div class="col-sm-2"><input type="text" name="firstname" placeholder="FirstName" ng-model="firstname"
+                                             required></div>
+
+                <span class="col-sm-3 error-font" ng-show="myForm.firstname.$invalid && !myForm.firstname.$pristine">FirstName is required.</span>
+
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1 font">&nbsp;LastName</div>
+                <div class="col-sm-2"><input type="text" name="lastname" placeholder="Lastname" ng-model="lastname"
+                                             required></div>
+
+                <span class="col-sm-3 error-font" ng-show="myForm.lastname.$invalid && !myForm.lastname.$pristine">LastName is required.</span>
+
+            </div>
+            <br/>
+
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1 font">&nbsp;PassWord</div>
+                <div class="col-sm-2"><input type="password" name="password" placeholder="Password" ng-model="password"
+                                             required>
+
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1 font">&nbsp;Confirm PassWord</div>
+                <div class="col-sm-2"><input type="password" name="retypepassword" placeholder="ReType Password"
+                                             ng-model="retypepassword" required>
+
+                </div>
+            </div>
+            <br/>
+
+            <p align="center"><a href="#details"><input type="Submit" ng-disabled="myForm.$invalid"
+                                                        ng-click="userClick()" class="btn btn-success button-style"
+                                                        value="Next"/></a></p><br/>
+
+        </form>
+        <br/>
+        <br/>
+    </div>
+</div>
+</body>

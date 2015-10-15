@@ -1,0 +1,82 @@
+.header{
+
+    margin-bottom: 0px;
+    height: 50px;
+}
+
+.header-style{
+    background-color: #2A0823;
+}
+
+.dropdown-align{
+    left: 1000px;
+}
+
+.dropdown-menu-align{
+    left: -51px;
+}
+
+.brand {
+    float: left;
+    height: 0px;
+    padding: 0px 0px;
+    font-size: 18px;
+    line-height: 0px;
+    color: whitesmoke;
+
+}
+
+.brand-img{
+    /*bottom: 20px;*/
+    /*position: relative;*/
+    /*height: 40px;*/
+    bottom: 17px;
+    position: relative;
+    height: 54px;
+}
+
+.footer{
+    color: #122b40;
+    background-color: #bdb5c0;
+    height: 150px;
+}
+
+.footer-text{
+    text-align: right;
+    top: -138px;
+    right: -436px;
+    font-family: Arial;
+}
+
+.footer-text1{
+    text-align: left;
+    left: 10px;
+    font-family: Arial;
+}
+
+.footer-img{
+    width: 40px;
+    border: solid 1px #bdb5c0;
+    background-color: #bdb5c0;
+    color: #bdb5c0;
+}
+
+.footer-logo{
+    height: 100px;
+}
+
+.footer-logo-align{
+    top: -25px;
+    right: -24px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+}
+
+.glyphicon-size{
+    font-size: 25px;
+}
+
