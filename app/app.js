@@ -1,5 +1,9 @@
 var creativeApp = angular.module('creativeApp',
-    ['ngRoute','interestControllers','interestServices','userControllers','detailsControllers','loginControllers','forgotPwdControllers','mainPageControllers','angularUtils.directives.dirPagination']);
+    ['ngRoute','interestControllers','interestServices',
+        'userControllers','detailsControllers','loginControllers',
+        'forgotPwdControllers','mainPageControllers','angularUtils.directives.dirPagination',
+        'interestPageControllers'
+    ]);
 
 // configure our routes
 creativeApp.config(function($routeProvider) {
@@ -44,6 +48,11 @@ creativeApp.config(function($routeProvider) {
       .when('/main', {
           templateUrl : 'MainPage/MainPage.html',
           controller  : 'mainPageController'
+      })
+
+      .when('/interestPage', {
+          templateUrl : 'InterestsPage/InterestsPage.html',
+          controller  : 'interestPageController'
       })
 
       .when('/', {

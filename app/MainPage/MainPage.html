@@ -1,6 +1,4 @@
 <body ng-controller="mainPageController">
-
-
 <div class="container-fluid">
     <!--<div class="row-fluid">-->
 
@@ -10,8 +8,8 @@
         <p align="center" class="name-style"><a href="">{{fullName}}</a></p>
 
         <p align="left" class="mini-section-header">Your Interests:</p>
-        <ul ng-repeat="userInterest in userInterests | unique:'category'">
-            <li><span class="glyphicon" ng-class="glyphiconName{{$index}}"><a href="">
+        <ul ng-repeat="userInterest in userInterests | unique:'category'" >
+            <li><span class="glyphicon" ng-class="glyphiconName{{$index}}"><a href="" ng-click="interestPage(userInterest.category)" >
                 {{userInterest.category}}</a></span>
             </li>
         </ul>

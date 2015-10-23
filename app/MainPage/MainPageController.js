@@ -23,10 +23,13 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
 
     var userInterest = $http.get('http://localhost:8080/creative-backend/service/userInterests?userID=' + $sessionStorage.sessionUserID);
     console.log(userInterest);
+    //$rootScope.userInterestData = userInterest;
+
     userInterest
         .then(function (data) {
             console.log('Success!', data.data);
             $rootScope.interestData = data.data;
+
             for (var i = 0; i < data.data.length; i++) {
                 var userInterests = data.data[i].category;
                 console.log(userInterests);
@@ -42,6 +45,7 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
             }
 
             $scope.userInterests = data.data;
+            console.log($scope.userInterests);
             console.log($scope.userInterests);
 
 
@@ -107,6 +111,11 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
             console.log('Failure...', error);
         });
 
+    $scope.interestPage = function(selectedItem){
+        console.log(selectedItem);
+        $rootScope.selectedInterests = selectedItem;
+        $location.path("/interestPage");
+    }
 
 
 }]);

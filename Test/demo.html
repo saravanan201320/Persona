@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="imageuploadDemo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body ng-controller="DemoCtrl">
+<form enctype="multipart/form-data">
+<input type="file" name="file" ng-model="file"/>
+<button value="Submit" ng-click="uploadFile()"></button>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script>
+    angular
+            .module('imageuploadDemo', [])
+            .controller('DemoCtrl', function($scope, $http) {
+
+                $scope.uploadFile = function() {
+                   // $scope.file1=$scope.file;
+                    console.log($scope.file);
+                    var formData=new FormData();
+                    formData.append("file",$scope.file.files[0]);
+                   // console.log(files);
+                   // console.log(files);
+                   // var fd = new FormData();
+                    //Take the first selected file
+                   // fd.append("file", files[0]);
+                   // console.log(files);
+                    var uploadFiles = $http.post('http://localhost:8080/creative-backend/service/uploadImage?file='+formData,null);
+                    console.log(uploadFiles);
+
+                };
+            });
+</script>
+
+</body>
+</html>
