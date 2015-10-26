@@ -44,21 +44,25 @@ signUpControllers.controller('signUpController', ['$scope', '$rootScope', '$http
 
             }
         };
-        $http.post('http://localhost:8080/creative-backend/service/saveUser?interestID='+$rootScope.selectedValue+'&file='+file, userObj);
-        //Upload.upload({
-        //
-        //    url: ('http://localhost:8080/creative-backend/service/saveUser?interestID='+$rootScope.selectedValue+'&file='+file, userObj)
-        //    //fields: {}, // additional data to send
-        //    //data: userObj,
-        //
-        //   // data: {file: file, 'interestID': $rootScope.selectedValue, userObj: userObj},
-        //
-        //}).progress(function (evt) {
-        //    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-        //    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-        //}).success(function (data, status, headers, config) {
-        //    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-        //});
+        $http.post('http://localhost:8080/creative-backend/service/saveUser?interestID='+$rootScope.selectedValue, userObj);
+
+       // $http.post('http://localhost:8080/creative-backend/service/saveUser?interestID='+$rootScope.selectedValue+'&file='+file, userObj);
+        Upload.upload({
+
+            url: 'http://localhost:8080/creative-backend/service/saveUser',
+
+            fields: {'interestID': $rootScope.selectedValue}, // additional data to send
+            data: JSON.stringify({"user": userObj}),
+            file: file
+
+           // data: {file: file, 'interestID': $rootScope.selectedValue, userObj: userObj},
+
+        }).progress(function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+        }).success(function (data, status, headers, config) {
+            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+        });
     };
 
 

@@ -3,6 +3,25 @@
 
 }
 
+
+.profilePicSpan {
+    display: none;
+    position: absolute;
+    top: 134px;
+    left: 43px;
+    bottom: 6px;
+    right: -41px;
+    background: rgba(0,0,0,0.6);
+    color: #ddd;
+    padding: 15px;
+    padding-top: 6px;
+    font-weight: 700;
+}
+
+a:hover span {
+    display: block;
+}
+
 .hr-line{
     margin-top: 0px;
     margin-bottom: -30px;

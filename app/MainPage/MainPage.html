@@ -3,7 +3,50 @@
     <!--<div class="row-fluid">-->
 
     <div class="span2 vertical-line-left">
-        <p align="center"><img src="Images/dp-male.png" style="width: 125px"></p>
+
+            <a style="float: left;position: relative;"  href="" data-toggle="modal" data-target="#ProfilePictureModal" ng-click="pictureUpdate()">
+                <p align="center"><img src="Images/dp-male.png" alt="" style="display: block; width: 180px;left: 40px;top: 3px; position: relative;"/></p>
+                <span class="profilePicSpan">Update Profile Picture</span>
+            </a>
+
+        <div class="modal fade" id="ProfilePictureModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Profile Picture Upload</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="myForm">
+                            <fieldset>
+                                <input type="file" ngf-select ng-model="picFile" name="file"
+                                       accept="image/*" ngf-max-size="2MB" required>
+
+                                <button ng-disabled="!myForm.$valid"
+                                        ng-click="uploadPic(picFile)">Submit</button>
+
+
+
+
+                            </fieldset>
+                            <br>
+                        </form>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--<p align="center"><img src="Images/dp-male.png" class="profilePic"></p>-->
+        <!--<div class="picLink">text</div>-->
 
         <p align="center" class="name-style"><a href="">{{fullName}}</a></p>
 

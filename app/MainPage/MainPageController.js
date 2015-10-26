@@ -1,8 +1,8 @@
 /**
  * Created by saravana.sivakumar on 10/9/2015.
  */
-var mainPageControllers = angular.module('mainPageControllers', ["ngStorage", "angular.filter",'angularUtils.directives.dirPagination']);
-mainPageControllers.controller('mainPageController', ['$scope', '$http', '$location', '$rootScope', '$sessionStorage','$route', function ($scope, $http, $location, $rootScope, $sessionStorage,$route) {
+var mainPageControllers = angular.module('mainPageControllers', ["ngStorage", "angular.filter",'angularUtils.directives.dirPagination','ngFileUpload']);
+mainPageControllers.controller('mainPageController', ['$scope', '$http', '$location', '$rootScope', '$sessionStorage','$route','Upload', function ($scope, $http, $location, $rootScope, $sessionStorage,$route,Upload) {
     $rootScope.loggedIn = true;
     $scope.subCategorys = [];
 
@@ -116,6 +116,20 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
         $rootScope.selectedInterests = selectedItem;
         $location.path("/interestPage");
     }
+
+    $scope.uploadPic = function (file) {
+        console.log($sessionStorage.sessionUserID);
+        Upload.upload({
+            url: 'http://localhost:8080/creative-backend/service/uploadImage',
+            fields: {'userID': $sessionStorage.sessionUserID}, // additional data to send
+            file: file
+        }).progress(function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+        }).success(function (data, status, headers, config) {
+            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+        });
+    };
 
 
 }]);
