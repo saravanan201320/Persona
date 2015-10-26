@@ -33,30 +33,37 @@ interestControllers.controller('interestController', ['$scope','StudentsService'
             $rootScope.selection = $scope.selection.push(interestID);
         }
     };
-    $scope.submitClick = function(){
-        $rootScope.selectedValue = $scope.selection;
-        console.log($rootScope.selectedValue);
-        var userObj =
-            {
-                fName: $rootScope.fName,
-                lName: $rootScope.lName,
-                password: $rootScope.pwd,
-                userDetails: {
-                    emailId: $rootScope.email1,
-                    contactNum: $rootScope.mobile,
-                    dob: "1990-12-02",
-                    addressLine1: $rootScope.addressLine1,
-                    addressLine2: $rootScope.addressLine2,
-                    city: $rootScope.city,
-                    state: $rootScope.state1,
-                    country: $rootScope.country,
-                    zipCode: $rootScope.code
 
-                }
-            };
 
-        console.log(userObj);
-        $http.post('http://localhost:8080/creative-backend/service/saveUser?interestID='+$rootScope.selectedValue, userObj);
+$scope.interestsClick =function(){
+    $rootScope.selectedValue = $scope.selection;
+    console.log($rootScope.selectedValue);
+}
 
-    }
+    //$scope.submitClick = function(){
+    //
+    //    console.log($rootScope.selectedValue);
+    //    var userObj =
+    //        {
+    //            fName: $rootScope.fName,
+    //            lName: $rootScope.lName,
+    //            password: $rootScope.pwd,
+    //            userDetails: {
+    //                emailId: $rootScope.email1,
+    //                contactNum: $rootScope.mobile,
+    //                dob: "1990-12-02",
+    //                addressLine1: $rootScope.addressLine1,
+    //                addressLine2: $rootScope.addressLine2,
+    //                city: $rootScope.city,
+    //                state: $rootScope.state1,
+    //                country: $rootScope.country,
+    //                zipCode: $rootScope.code
+    //
+    //            }
+    //        };
+    //
+    //    console.log(userObj);
+    //    $http.post('http://localhost:8080/creative-backend/service/saveUser?interestID='+$rootScope.selectedValue, userObj);
+    //
+    //}
 }]);

@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<body ng-controller="signUpController">
+<div class="container-fluid">
+    <div class="main-content1">
+        <form name="myForm">
+            <fieldset>
+                <br>
+                <input type="file" ngf-select ng-model="picFile" name="file"
+                       accept="image/*" ngf-max-size="2MB" required>
 
+
+                <!--<button ng-click="getImage()">Get Image</button>-->
+
+                <!--<img height="150px" width="150px" ng-src="data:image/png;base64,{{profilePic.profileImage}}">-->
+
+            </fieldset>
+            <br>
+        </form>
+
+        <p align="center"><a href="#/SignUpComplete"><input type="submit" class="btn btn-success button-style"
+                                                            ng-click="uploadPic(picFile)" value="Submit" /></a></p><br/>
+    </div>
+</div>
 </body>
-</html>

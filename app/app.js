@@ -2,7 +2,7 @@ var creativeApp = angular.module('creativeApp',
     ['ngRoute','interestControllers','interestServices',
         'userControllers','detailsControllers','loginControllers',
         'forgotPwdControllers','mainPageControllers','angularUtils.directives.dirPagination',
-        'interestPageControllers'
+        'interestPageControllers','signUpControllers','ngFileUpload'
     ]);
 
 // configure our routes
@@ -33,6 +33,10 @@ creativeApp.config(function($routeProvider) {
       .when('/interests', {
         templateUrl : 'SignUp/interests.html',
         controller  : 'interestController'
+      })
+      .when('/profiledp', {
+          templateUrl : 'SignUp/ProfileImage.html',
+          controller  : 'signUpController'
       })
 
       .when('/SignUpComplete', {

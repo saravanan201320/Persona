@@ -1,39 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="imageuploadDemo">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
 </head>
 
-<body ng-controller="DemoCtrl">
-<form enctype="multipart/form-data">
-<input type="file" name="file" ng-model="file"/>
-<button value="Submit" ng-click="uploadFile()"></button>
+
+<body ng-app="fileUpload" ng-controller="MyCtrl">
+<form name="myForm">
+    <fieldset>
+    <input type="file" ngf-select ng-model="picFile" name="file"
+           accept="image/*" ngf-max-size="2MB" required>
+
+    <button ng-disabled="!myForm.$valid"
+            ng-click="uploadPic(picFile)">Submit</button>
+      <button ng-click="getImage()">Get Image</button>
+
+        <img height="150px" width="150px" ng-src="data:image/png;base64,{{profilePic.profileImage}}">
+
+    </fieldset>
+    <br>
 </form>
+</body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="../node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+<script src="../node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
 <script>
     angular
-            .module('imageuploadDemo', [])
-            .controller('DemoCtrl', function($scope, $http) {
-
-                $scope.uploadFile = function() {
-                   // $scope.file1=$scope.file;
-                    console.log($scope.file);
-                    var formData=new FormData();
-                    formData.append("file",$scope.file.files[0]);
-                   // console.log(files);
-                   // console.log(files);
-                   // var fd = new FormData();
-                    //Take the first selected file
-                   // fd.append("file", files[0]);
-                   // console.log(files);
-                    var uploadFiles = $http.post('http://localhost:8080/creative-backend/service/uploadImage?file='+formData,null);
-                    console.log(uploadFiles);
-
+            .module('fileUpload', ['ngFileUpload'])
+            .controller('MyCtrl', ['$scope', 'Upload','$http', function ($scope, Upload,$http) {
+                // upload later on form submit or something similar
+                $scope.submit = function() {
+                    if (form.file.$valid && $scope.file) {
+                        $scope.upload($scope.file);
+                    }
                 };
-            });
+
+                // upload on file select or drop
+                $scope.uploadPic = function (file) {
+                    console.log("Saravanan");
+                    Upload.upload({
+                        url: 'http://localhost:8080/creative-backend/service/uploadImage',
+                        fields: {'username': 'Saravanan'}, // additional data to send
+                        file: file
+                    }).progress(function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                    }).success(function (data, status, headers, config) {
+                        console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                    });
+                };
+
+                $scope.getImage = function(){
+                    var getImage = $http.get('http://localhost:8080/creative-backend/service/getProfileImage');
+                    console.log(getImage);
+                    getImage
+                            .then(function (data) {
+                                console.log('Success!', data.data);
+                                $scope.profilePic = data.data;
+                                console.log($scope.profilePic);
+
+                            }
+                            , function (error) {
+                                console.log('Failure...', error);
+                            });
+                }
+                var getImage = $http.get('http://localhost:8080/creative-backend/service/getProfileImage');
+                console.log(getImage);
+                getImage
+                        .then(function (data) {
+                            console.log('Success!', data.data);
+                            $scope.profilePic = data.data[0];
+                            console.log($scope.profilePic);
+
+                        }
+                        , function (error) {
+                            console.log('Failure...', error);
+                        });
+
+    }]);
 </script>
 
 </body>
