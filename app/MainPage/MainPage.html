@@ -4,7 +4,7 @@
 
     <div class="span2 vertical-line-left">
 
-            <a   href="" data-toggle="modal" data-target="#ProfilePictureModal" ng-click="pictureUpdate()">
+            <a   href="" data-toggle="modal" data-target="#ProfilePictureModal">
                 <img ng-src="data:image/*;base64,{{profilePic.profileImage}}" src="Images/dp-male.png" style="display: block; width: 180px;left: 40px;top: 3px; position: relative;"/>
                 <span class="profilePicSpan">Update Profile Picture</span>
             </a>
@@ -101,8 +101,12 @@
                                                           ng-model="description"></textarea>
             </p>
 
+
+            <a href=""><img class="attachmentImg" ngf-select ng-model="files" ngf-multiple="true" src="Images/camera_attachment.png"></a>
+            <!--<button type="submit" ng-click="submit()">submit</button>-->
+
             <p align="center" class="row">
-                <button type="submit" class="btn btn-block postad-btn categorybtn-style" ng-click="postAd()">PostAd
+                <button type="submit" class="btn btn-block postad-btn categorybtn-style" ng-click="postAd(files)">PostAd
                 </button>
                 <button type="reset" class="btn btn-block reset-btn categorybtn-style">Reset</button>
             </p>

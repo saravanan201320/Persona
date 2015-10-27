@@ -87,18 +87,32 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
         $scope.subCategotyName = selectedSubItem;
     }
 
-    $scope.postAd = function () {
+    $scope.postAd = function (files) {
+        console.log("----->"+files);
+        Upload.upload({
+            url: 'http://localhost:8080/creative-backend/service/postAd?Category='+$scope.categoryName+'&Sub_Category='+$scope.subCategotyName+'&userName='+$scope.fullName,
+            fields: {
+                'userId': $sessionStorage.sessionUserID,
+                'description': $scope.description
+            }, // additional data to send
 
-       var postAdObj = {
-           userId: $sessionStorage.sessionUserID,
-           description: $scope.description,
-           image: "image"
-       };
-        console.log(postAdObj);
-        var postAd = $http.post('http://localhost:8080/creative-backend/service/postAd?Category='+$scope.categoryName+'&Sub_Category='+$scope.subCategotyName+'&userName='+$scope.fullName, postAdObj);
-        $location.path('/main');
-        $route.reload();
-        $route.reload();
+            file: files
+        }).progress(function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+        }).success(function (data, status, headers, config) {
+            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+        });
+       //var postAdObj = {
+       //    userId: $sessionStorage.sessionUserID,
+       //    description: $scope.description,
+       //    image: "image"
+       //};
+       // console.log(postAdObj);
+       // var postAd = $http.post('http://localhost:8080/creative-backend/service/postAd?Category='+$scope.categoryName+'&Sub_Category='+$scope.subCategotyName+'&userName='+$scope.fullName, postAdObj);
+       // $location.path('/main');
+       // $route.reload();
+       // $route.reload();
     };
 
     var postedAd = $http.get('http://localhost:8080/creative-backend/service/postedAd');
