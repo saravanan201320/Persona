@@ -7,14 +7,14 @@
 .profilePicSpan {
     display: none;
     position: absolute;
-    top: 134px;
-    left: 43px;
-    bottom: 6px;
-    right: -41px;
+    top: 186px;
+    left: 56px;
+    bottom: 445px;
+    right: 1114px;
     background: rgba(0,0,0,0.6);
     color: #ddd;
     padding: 15px;
-    padding-top: 6px;
+    padding-top: 8px;
     font-weight: 700;
 }
 
@@ -41,7 +41,7 @@ a:hover span {
 .right-div{
     float: right;
     position: relative;
-    top: -300px;
+    top: -404px;
 }
 
 .name-style{
@@ -72,6 +72,8 @@ ul{
     padding: 15px;
     margin-bottom: -10px;
     font-weight: bold;
+    top: 0px;
+    position: relative;
 }
 
 .iymk-body{
@@ -86,7 +88,7 @@ ul{
     background-color: #bdb5c0;
     color: #fff;
     margin: 272px;
-    top: -175px;
+    top: -216px;
     position: absolute;
     width: 735px;
     padding: 8px;
@@ -97,7 +99,7 @@ ul{
     height: 200px;
     background-color: #e4e1e5;
     margin: 272px;
-    top: -140px;
+    top: -181px;
     position: absolute;
     width: 735px;
     padding: 8px;
@@ -166,7 +168,7 @@ ul{
     background-color: #bdb5c0;
     color: #fff;
     margin: 272px;
-    top: 75px;
+    top: 44px;
     position: absolute;
     width: 735px;
     padding: 15px;
@@ -176,13 +178,14 @@ ul{
 
 .newsfeed-body{
     border: solid 1px #e4e1e5;
-    /*background-color: #e4e1e5;*/
+    /* background-color: #e4e1e5; */
     margin: 0px;
     margin-left: 272px;
     margin-top: -15px;
     position: relative;
     width: 735px;
     padding: 8px;
+    top: -76px;
 
 }
 

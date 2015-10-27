@@ -131,5 +131,19 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
         });
     };
 
+    var getImage = $http.get('http://localhost:8080/creative-backend/service/getProfileImage?userID='+$sessionStorage.sessionUserID);
+
+    getImage
+        .then(function (data) {
+            console.log('------->Success!', data.data);
+                $scope.profilePic = data.data[0];
+
+            console.log($scope.profilePic);
+
+        }
+        , function (error) {
+            console.log('Failure...', error);
+        });
+
 
 }]);
