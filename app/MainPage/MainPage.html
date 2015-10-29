@@ -69,6 +69,7 @@
     <div>
         <div class="postad-header">Post An Advertisement</div>
         <div class="postad-body">
+            <form name="myForm" enctype="multipart/form-data">
             <p class="category-style">Select Category :
 
             <div class="dropdown">
@@ -102,7 +103,7 @@
             </p>
 
 
-            <a href=""><img class="attachmentImg" ngf-select ng-model="files" ngf-multiple="true" src="Images/camera_attachment.png"></a>
+            <a href=""><img class="attachmentImg" ngf-select ng-model="files" name="files[]" accept="image/*" multiple="multiple" src="Images/camera_attachment.png"></a>
             <!--<button type="submit" ng-click="submit()">submit</button>-->
 
             <p align="center" class="row">
@@ -110,6 +111,7 @@
                 </button>
                 <button type="reset" class="btn btn-block reset-btn categorybtn-style">Reset</button>
             </p>
+                </form>
         </div>
 
     </div>

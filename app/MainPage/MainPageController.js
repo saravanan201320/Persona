@@ -86,23 +86,37 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
 
         $scope.subCategotyName = selectedSubItem;
     }
-
+    $scope.file =[];
     $scope.postAd = function (files) {
         console.log("----->"+files);
-        Upload.upload({
-            url: 'http://localhost:8080/creative-backend/service/postAd?Category='+$scope.categoryName+'&Sub_Category='+$scope.subCategotyName+'&userName='+$scope.fullName,
-            fields: {
-                'userId': $sessionStorage.sessionUserID,
-                'description': $scope.description
-            }, // additional data to send
+        for(var i=0; i<files.length;i++){
+            Upload.upload({
+                url: 'http://localhost:8080/creative-backend/service/attachmentFile',
+                file:files[i]
+            });
+        }
+        //$scope.file.push(files) ;
+        //console.log($scope.file);
+        //
+                Upload.upload({
+                    url: 'http://localhost:8080/creative-backend/service/postAd',
+                    fields: {
+                        'Category': $scope.categoryName,
+                        'Sub_Category': $scope.subCategotyName,
+                        'userName': $scope.fullName,
+                        'userId': $sessionStorage.sessionUserID,
+                        'description': $scope.description
 
-            file: files
-        }).progress(function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-        }).success(function (data, status, headers, config) {
-            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-        });
+                    }
+
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                }).success(function (data, status, headers, config) {
+                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                });
+
+
        //var postAdObj = {
        //    userId: $sessionStorage.sessionUserID,
        //    description: $scope.description,
@@ -129,7 +143,7 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
         console.log(selectedItem);
         $rootScope.selectedInterests = selectedItem;
         $location.path("/interestPage");
-    }
+    };
 
     $scope.uploadPic = function (file) {
         console.log($sessionStorage.sessionUserID);
