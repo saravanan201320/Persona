@@ -134,6 +134,8 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
         .then(function (data) {
             console.log('Success!', data.data);
            $scope.newsFeedPosts = data.data;
+
+
         }
         , function (error) {
             console.log('Failure...', error);

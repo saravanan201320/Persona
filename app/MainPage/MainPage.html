@@ -4,10 +4,11 @@
 
     <div class="span2 vertical-line-left">
 
-            <a   href="" data-toggle="modal" data-target="#ProfilePictureModal">
-                <img ng-src="data:image/*;base64,{{profilePic.profileImage}}" src="Images/dp-male.png" style="display: block; width: 180px;left: 40px;top: 3px; position: relative;"/>
-                <span class="profilePicSpan">Update Profile Picture</span>
-            </a>
+        <a href="" data-toggle="modal" data-target="#ProfilePictureModal">
+            <img ng-src="data:image/*;base64,{{profilePic.profileImage}}" src="Images/dp-male.png"
+                 style="display: block; width: 180px;left: 40px;top: 3px; position: relative;"/>
+            <span class="profilePicSpan">Update Profile Picture</span>
+        </a>
 
         <div class="modal fade" id="ProfilePictureModal" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -25,9 +26,8 @@
                                        accept="image/*" ngf-max-size="2MB" required>
 
                                 <button ng-disabled="!myForm.$valid"
-                                        ng-click="uploadPic(picFile)">Submit</button>
-
-
+                                        ng-click="uploadPic(picFile)">Submit
+                                </button>
 
 
                             </fieldset>
@@ -51,8 +51,9 @@
         <p align="center" class="name-style"><a href="">{{fullName}}</a></p>
 
         <p align="left" class="mini-section-header">Your Interests:</p>
-        <ul ng-repeat="userInterest in userInterests | unique:'category'" >
-            <li><span class="glyphicon" ng-class="glyphiconName{{$index}}"><a href="" ng-click="interestPage(userInterest.category)" >
+        <ul ng-repeat="userInterest in userInterests | unique:'category'">
+            <li><span class="glyphicon" ng-class="glyphiconName{{$index}}"><a href=""
+                                                                              ng-click="interestPage(userInterest.category)">
                 {{userInterest.category}}</a></span>
             </li>
         </ul>
@@ -70,71 +71,83 @@
         <div class="postad-header">Post An Advertisement</div>
         <div class="postad-body">
             <form name="myForm" enctype="multipart/form-data">
-            <p class="category-style">Select Category :
+                <p class="category-style">Select Category :
 
-            <div class="dropdown">
-                <select class="btn  dropdown-toggle categorydd-style categorybtn-style" ng-model="selectedItem"
-                        ng-change="category(selectedItem)"
-                        ng-options="userInterest.category for userInterest in userInterests | unique:'category'"
-                        value="{{userInterest.category}}">
+                <div class="dropdown">
+                    <select class="btn  dropdown-toggle categorydd-style categorybtn-style" ng-model="selectedItem"
+                            ng-change="category(selectedItem)"
+                            ng-options="userInterest.category for userInterest in userInterests | unique:'category'"
+                            value="{{userInterest.category}}">
 
-                    <option value="">---Please select---</option>
+                        <option value="">---Please select---</option>
 
-                </select>
-            </div>
-            </p>
-            <p class="subcategory-style">Select Sub-Category :
+                    </select>
+                </div>
+                </p>
+                <p class="subcategory-style">Select Sub-Category :
 
-            <div class="dropdown">
-
-
-                <select class="btn  dropdown-toggle subcategorydd-style categorybtn-style" ng-model="selectedSubItem"
-                        ng-change="subCategory(selectedSubItem)"
-                        ng-options="subCategory for subCategory in subCategorys | unique:'category'"
-                        value="{{subCategory}}">
-                    <option value="">---Please select---</option>
-
-                </select>
-            </div>
-            </p>
-            <p class="desc-style">Description : <textarea class="textarea-style" rows="4" cols="50"
-                                                          placeholder="Post your advertisement description here!"
-                                                          ng-model="description"></textarea>
-            </p>
+                <div class="dropdown">
 
 
-            <a href=""><img class="attachmentImg" ngf-select ng-model="files" name="files[]" accept="image/*" multiple="multiple" src="Images/camera_attachment.png"></a>
-            <!--<button type="submit" ng-click="submit()">submit</button>-->
+                    <select class="btn  dropdown-toggle subcategorydd-style categorybtn-style"
+                            ng-model="selectedSubItem"
+                            ng-change="subCategory(selectedSubItem)"
+                            ng-options="subCategory for subCategory in subCategorys | unique:'category'"
+                            value="{{subCategory}}">
+                        <option value="">---Please select---</option>
 
-            <p align="center" class="row">
-                <button type="submit" class="btn btn-block postad-btn categorybtn-style" ng-click="postAd(files)">PostAd
-                </button>
-                <button type="reset" class="btn btn-block reset-btn categorybtn-style">Reset</button>
-            </p>
-                </form>
+                    </select>
+                </div>
+                </p>
+                <p class="desc-style">Description : <textarea class="textarea-style" rows="4" cols="50"
+                                                              placeholder="Post your advertisement description here!"
+                                                              ng-model="description"></textarea>
+                </p>
+
+
+                <a href=""><img class="attachmentImg" ngf-select ng-model="files" name="files[]" accept="image/*"
+                                multiple="multiple" src="Images/camera_attachment.png"></a>
+                <!--<button type="submit" ng-click="submit()">submit</button>-->
+
+                <p align="center" class="row">
+                    <button type="submit" class="btn btn-block postad-btn categorybtn-style" ng-click="postAd(files)">
+                        PostAd
+                    </button>
+                    <button type="reset" class="btn btn-block reset-btn categorybtn-style">Reset</button>
+                </p>
+            </form>
         </div>
 
     </div>
 
 
-
-
     <div class="newsfeed-header">News Feed</div>
-    <div class="newsfeed-body">
-        <div class="newsfeed-items" dir-paginate="newsFeedPost in newsFeedPosts|orderBy:'-updateDetails.createdTS'|filter:search|itemsPerPage:5">
+    <div class="newsfeed-body container-fluid row ">
+        <div class="newsfeed-items"
+             dir-paginate="newsFeedPost in newsFeedPosts|unique: 'userPostId'|orderBy:'-updateDetails.createdTS'|filter:search|itemsPerPage:5">
 
             <p><b>Posted Ad In {{newsFeedPost.category}} ({{newsFeedPost.sub_Category}}):</b>
 
             <p>{{newsFeedPost.description}}</p>
 
-            <p>{{newsFeedPost.image}}</p>
+            <div style="display: inline-flex;"  >
+                <span ng-repeat="newsFeedPostImages in newsFeedPost.userPostImage">
+                    <div style="list-style: none">
+
+                        <img style="width: 200px; height: 190px;" ng-src="data:image/*;base64,{{newsFeedPostImages.image}}">
+
+
+                    </div>
+                     <br/>
+                </span>
+            </div>
 
             <p>Created By {{newsFeedPost.updateDetails.createdBy}}, {{newsFeedPost.updateDetails.createdTS}}
         </div>
         <dir-pagination-controls style="float: right"
-                max-size="50"
-                direction-links="true"
-                boundary-links="true">
+                                 max-size="50"
+                                 direction-links="true"
+                                 boundary-links="true">
         </dir-pagination-controls>
 
     </div>
