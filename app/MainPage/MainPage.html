@@ -122,25 +122,44 @@
 
 
     <div class="newsfeed-header">News Feed</div>
-    <div class="newsfeed-body container-fluid row ">
+    <div class="newsfeed-body container-fluid ">
         <div class="newsfeed-items"
-             dir-paginate="newsFeedPost in newsFeedPosts|unique: 'userPostId'|orderBy:'-updateDetails.createdTS'|filter:search|itemsPerPage:5">
+             dir-paginate="newsFeedPost in newsFeedPosts|unique: 'userPostId'|orderBy:'newsFeedPost.updateDetails.createdTS':'-newsFeedPost.updateDetails.createdTS'|filter:search|itemsPerPage:5">
 
             <p><b>Posted Ad In {{newsFeedPost.category}} ({{newsFeedPost.sub_Category}}):</b>
 
             <p>{{newsFeedPost.description}}</p>
 
-            <div style="display: inline-flex;"  >
-                <span ng-repeat="newsFeedPostImages in newsFeedPost.userPostImage">
-                    <div style="list-style: none">
+            <div class="row" id="slides_control" style="width: 700px">
+                <carousel interval=3000 style="padding-top: 20px;" class="col-md-4">
+                    <slide ng-repeat="newsFeedPostImages in newsFeedPost.userPostImage"
+                           active="newsFeedPostImages.active">
+                        <div style="list-style: none">
+                            <img style="width: 200px; height: 210px;"
+                                 ng-src="data:image/*;base64,{{newsFeedPostImages.image}}">
+                        </div>
+                        <br/>
+                    </slide>
+                </carousel>
+                <div class="col-md-1"></div>
+                <div  class="col-md-6" style="line-height: 5px;font-family: arial;" ng-repeat="userDetail in userDetails|unique: 'user.userID'" ng-if="userDetail.user.userID == newsFeedPost.userId">
+                    <p class="glyphicon glyphicon-map-marker glyMarker"></p>
+                    <p class="lead" style="line-height: 0.4;">{{userDetail.user.fName}} {{userDetail.user.lName}}</p>
+                    <p>&nbsp;&nbsp;{{userDetail.addressLine1}}</p>
+                    <p>&nbsp;&nbsp;{{userDetail.addressLine2}}</p>
+                    <p>&nbsp;&nbsp;{{userDetail.city}}- {{userDetail.zipCode}}</p>
+                    <p>&nbsp;&nbsp;{{userDetail.state}}</p>
+                    <p>&nbsp;&nbsp;{{userDetail.country}}</p>
+                    <p>&nbsp;&nbsp;Email ID : {{userDetail.emailId}}</p>
 
-                        <img style="width: 200px; height: 190px;" ng-src="data:image/*;base64,{{newsFeedPostImages.image}}">
+                    <p>&nbsp;&nbsp;<a href="" data-toggle="modal" data-target="#MapModal" ng-click="viewMap(userDetail.addressLine1,userDetail.addressLine2,
+                    userDetail.city)">View Map</a></p>
+                    <p><button class="btn btn-block btn-primary ">Book Appointment</button></p>
+                </div>
 
 
-                    </div>
-                     <br/>
-                </span>
             </div>
+
 
             <p>Created By {{newsFeedPost.updateDetails.createdBy}}, {{newsFeedPost.updateDetails.createdTS}}
         </div>
@@ -150,6 +169,27 @@
                                  boundary-links="true">
         </dir-pagination-controls>
 
+    </div>
+    <div class="modal fade" id="MapModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Location</h4>
+                </div>
+                <div class="modal-body">
+                    <map center="{{addressLatitude}},{{addressLongitude}}" zoom="13">
+                        <marker position="{{addressLatitude}}, {{addressLongitude}}" on-click="toggleBounce()" animation="DROP" draggable="true"></marker>
+                    </map>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
     </div>
     <!--</div>-->
 

@@ -2,7 +2,7 @@ var creativeApp = angular.module('creativeApp',
     ['ngRoute','interestControllers','interestServices',
         'userControllers','detailsControllers','loginControllers',
         'forgotPwdControllers','mainPageControllers','angularUtils.directives.dirPagination',
-        'interestPageControllers','signUpControllers','ngFileUpload'
+        'interestPageControllers','signUpControllers','ngFileUpload','ngMap'
     ]);
 
 // configure our routes

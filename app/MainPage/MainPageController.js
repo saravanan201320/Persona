@@ -1,7 +1,7 @@
 /**
  * Created by saravana.sivakumar on 10/9/2015.
  */
-var mainPageControllers = angular.module('mainPageControllers', ["ngStorage", "angular.filter",'angularUtils.directives.dirPagination','ngFileUpload']);
+var mainPageControllers = angular.module('mainPageControllers', ["ngStorage", "angular.filter",'angularUtils.directives.dirPagination','ngFileUpload','ui.bootstrap','ngMap']);
 mainPageControllers.controller('mainPageController', ['$scope', '$http', '$location', '$rootScope', '$sessionStorage','$route','Upload', function ($scope, $http, $location, $rootScope, $sessionStorage,$route,Upload) {
     $rootScope.loggedIn = true;
     $scope.subCategorys = [];
@@ -141,6 +141,19 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
             console.log('Failure...', error);
         });
 
+    var userDetails = $http.get('http://localhost:8080/creative-backend/service/userDetails');
+    userDetails
+        .then(function (data) {
+            console.log('Success! User Details', data.data);
+
+            $scope.userDetails = data.data;
+            console.log("$scope.userDetails"+$scope.userDetails)
+        }
+        , function (error) {
+            console.log('Failure...', error);
+        });
+
+
     $scope.interestPage = function(selectedItem){
         console.log(selectedItem);
         $rootScope.selectedInterests = selectedItem;
@@ -174,6 +187,34 @@ mainPageControllers.controller('mainPageController', ['$scope', '$http', '$locat
         , function (error) {
             console.log('Failure...', error);
         });
+
+    $scope.viewMap = function(addressLine1,addressLine2,city){
+        console.log(addressLine1,addressLine2,city);
+
+        var getMapData = $http.get('http://maps.google.com/maps/api/geocode/json?address='+addressLine1+addressLine2+city)
+        getMapData
+            .then(function (data) {
+                console.log('------->Success!', data.data.results[0].geometry.location.lat);
+                console.log(data.data.results[0].geometry.location.lng)
+                $scope.addressLatitude = data.data.results[0].geometry.location.lat;
+                $scope.addressLongitude = data.data.results[0].geometry.location.lng;
+                //$scope.profilePic = data.data[0];
+
+                //console.log($scope.profilePic);
+
+            }
+            , function (error) {
+                console.log('Failure...', error);
+            });
+
+    }
+    $scope.toggleBounce = function() {
+        if (this.getAnimation() != null) {
+            this.setAnimation(null);
+        } else {
+            this.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
 
 
 }]);

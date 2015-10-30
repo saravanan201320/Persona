@@ -7,10 +7,10 @@
 .profilePicSpan {
     display: none;
     position: absolute;
-    top: 196px;
+    top: 188px;
     left: 56px;
-    bottom: 410px;
     right: 1114px;
+    height: 35px;
     background: rgba(0,0,0,0.6);
     color: #ddd;
     padding: 15px;
@@ -225,3 +225,24 @@ option:hover {
 .modal-style{
     display: block;
 }
+
+.userDetails{
+    position: absolute;
+    left: 350px;
+    top: 70px;
+}
+
+.glyMarker{
+    position: absolute;
+    left: -15px;
+    top: -11px;
+    font-size: 30px;
+    color: #2A0823;
+}
+
+.apptBtn{
+    width: 145px;
+    position: absolute;
+    left: 368px;
+}
+

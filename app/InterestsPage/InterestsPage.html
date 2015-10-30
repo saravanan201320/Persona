@@ -23,11 +23,25 @@
     </div>
     <div class="newsfeed-header1">News Feed</div>
     <div class="newsfeed-body1">
-        <div class="newsfeed-items" dir-paginate="newsFeedPostForInterest in newsFeedPostForInterests|orderBy:'-updateDetails.createdTS'|filter:{category: selectedInterest}|itemsPerPage:5">
+        <div class="newsfeed-items" dir-paginate="newsFeedPostForInterest in newsFeedPostForInterests|unique: 'userPostId'|orderBy:'-updateDetails.createdTS'|filter:{category: selectedInterest}|itemsPerPage:5">
 
             <p><b>Posted Ad In {{newsFeedPostForInterest.category}} ({{newsFeedPostForInterest.sub_Category}}):</b>
 
             <p>{{newsFeedPostForInterest.description}}</p>
+            <div id="slides_control">
+                <carousel interval=3000>
+                    <slide ng-repeat="newsFeedPostForInterestImages in newsFeedPostForInterest.userPostImage">
+                        <div style="list-style: none">
+
+                            <img style="width: 200px; height: 190px;" ng-src="data:image/*;base64,{{newsFeedPostForInterestImages.image}}">
+
+
+                        </div>
+                        <br/>
+                    </slide>
+                </carousel>
+            </div>
+
 
             <p>{{newsFeedPostForInterest.image}}</p>
 
